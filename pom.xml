@@ -1,0 +1,77 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.apache.poi</groupId>
+	<artifactId>poi-parent</artifactId>
+	<packaging>pom</packaging>
+	<version>3.10.1-20151016-alfresco-patched</version>
+	<name>Apache POI - the Java API for Microsoft Documents</name>
+	<description>Maven build of Apache POI for Sonar checks</description>
+	<url>http://poi.apache.org/</url>
+
+	<mailingLists>
+		<mailingList>
+			<name>POI Users List</name>
+			<subscribe>user-subscribe@poi.apache.org</subscribe>
+			<unsubscribe>user-unsubscribe@poi.apache.org</unsubscribe>
+			<archive>http://mail-archives.apache.org/mod_mbox/poi-user/</archive>
+		</mailingList>
+		<mailingList>
+			<name>POI Developer List</name>
+			<subscribe>dev-subscribe@poi.apache.org</subscribe>
+			<unsubscribe>dev-unsubscribe@poi.apache.org</unsubscribe>
+			<archive>http://mail-archives.apache.org/mod_mbox/poi-dev/</archive>
+		</mailingList>
+	</mailingLists>
+
+	<licenses>
+		<license>
+			<name>The Apache Software License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+		</license>
+	</licenses>
+
+	<modules>
+		<module>main</module>
+		<module>excelant</module>
+		<module>scratchpad</module>
+		<module>ooxml</module>
+	</modules>
+
+	<properties>
+		<project.build.sourceEncoding>ASCII</project.build.sourceEncoding>
+		<!-- Try to disable running SVN blame as it causes errors here because the source is copied from the actual SVN location here! -->
+		<sonar.scm.disabled>true</sonar.scm.disabled>
+
+		<!-- define some of the third-party or plugin-versions globally to use the same in all modules -->
+		<xmlbeans.version>2.6.0</xmlbeans.version>
+		<junit.version>4.12</junit.version>
+		<maven.plugin.resources.version>3.0.1</maven.plugin.resources.version>
+		<maven.plugin.jar.version>3.0.1</maven.plugin.jar.version>
+		<maven.plugin.clean.version>3.0.0</maven.plugin.clean.version>
+		<maven.plugin.download.version>1.1.0</maven.plugin.download.version>
+		<maven.plugin.antrun.version>1.8</maven.plugin.antrun.version>
+		<maven.plugin.surefire.version>2.19.1</maven.plugin.surefire.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>commons-logging</groupId>
+			<artifactId>commons-logging</artifactId>
+			<version>1.1</version>
+			<scope>runtime</scope>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.13</version>
+			<scope>runtime</scope>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+			<version>1.5</version>
+		</dependency>
+	</dependencies>
+</project>
