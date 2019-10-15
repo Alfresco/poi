@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>org.apache.poi</groupId>
 		<artifactId>poi-parent</artifactId>
-		<version>3.10.1-20151016-alfresco-patched</version>
+		<version>3.10.1-20191015-alfresco-patched</version>
 	</parent>
 	<artifactId>poi-ooxml</artifactId>
 	<packaging>jar</packaging>
