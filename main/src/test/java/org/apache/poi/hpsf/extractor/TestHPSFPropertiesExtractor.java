@@ -17,15 +17,27 @@
 
 package org.apache.poi.hpsf.extractor;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
-
-import junit.framework.TestCase;
+import java.io.UnsupportedEncodingException;
+import java.nio.channels.FileChannel;
 
 import org.apache.poi.POIDataSamples;
+import org.apache.poi.hpsf.MarkUnsupportedException;
+import org.apache.poi.hpsf.NoPropertySetStreamException;
+import org.apache.poi.hpsf.PropertySet;
+import org.apache.poi.hpsf.SummaryInformation;
 import org.apache.poi.hssf.HSSFTestDataSamples;
 import org.apache.poi.hssf.extractor.ExcelExtractor;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.poifs.filesystem.DirectoryNode;
+import org.apache.poi.poifs.filesystem.DocumentEntry;
+import org.apache.poi.poifs.filesystem.DocumentInputStream;
+import org.apache.poi.poifs.filesystem.NPOIFSFileSystem;
 import org.apache.poi.poifs.filesystem.POIFSFileSystem;
+
+import junit.framework.TestCase;
 
 public final class TestHPSFPropertiesExtractor extends TestCase {
 	private static final POIDataSamples _samples = POIDataSamples.getHPSFInstance();
@@ -119,5 +131,17 @@ public final class TestHPSFPropertiesExtractor extends TestCase {
 		assertTrue(txt.indexOf("PID_EDITTIME") != -1);
 		assertTrue(txt.indexOf("PID_REVNUMBER") != -1);
 		assertTrue(txt.indexOf("PID_THUMBNAIL") != -1);
+	}
+	
+	public void test_bug_52372() throws NoPropertySetStreamException, MarkUnsupportedException, UnsupportedEncodingException, IOException {
+		POIFSFileSystem fs = new POIFSFileSystem(_samples.openResourceAsStream("52372.doc"));
+		HPSFPropertiesExtractor ext = new HPSFPropertiesExtractor(fs);
+		String text = ext.getText();
+		assertTrue(text.length() > 10);
+
+		String sinfText = ext.getSummaryInformationText();
+		assertTrue(sinfText.length() > 10);
+		String dinfText = ext.getDocumentSummaryInformationText();
+		assertTrue(dinfText.length() > 10);			
 	}
 }
