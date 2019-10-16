@@ -142,13 +142,17 @@ public class Section
          *    one looks for property ID 1 and extracts the codepage number. The
          *    seconds pass reads the other properties.
          */
-        properties = new Property[propertyCount];
+        
+        if ( propertyCount > Integer.MAX_VALUE )
+        	throw new UnsupportedOperationException( "Too many properties " + propertyCount );
+        
+        ArrayList<Property> tempProperties = new ArrayList<Property>();
 
         /* Pass 1: Read the property list. */
         int pass1Offset = o1;
-        final List<PropertyListEntry> propertyList = new ArrayList<PropertyListEntry>(propertyCount);
+        final List<PropertyListEntry> propertyList = new ArrayList<PropertyListEntry>();
         PropertyListEntry ple;
-        for (int i = 0; i < properties.length; i++)
+        for (int i = 0; i < propertyCount; i++)
         {
             ple = new PropertyListEntry();
 
@@ -217,8 +221,11 @@ public class Section
                     ple.length, codepage);
             if (p.getID() == PropertyIDMap.PID_CODEPAGE)
                 p = new Property(p.getID(), p.getType(), Integer.valueOf(codepage));
-            properties[i1++] = p;
+
+            tempProperties.add(p);
         }
+        
+        properties = tempProperties.toArray(new Property[tempProperties.size()]);
 
         /*
          * Extract the dictionary (if available).
