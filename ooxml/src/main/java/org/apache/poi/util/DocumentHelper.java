@@ -29,6 +29,7 @@ import javax.xml.stream.events.Namespace;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
 public final class DocumentHelper {
@@ -118,5 +119,15 @@ public final class DocumentHelper {
 	public static void addNamespaceDeclaration(Element element, Namespace namespace) {
 		addNamespaceDeclaration(element, namespace.getPrefix(), namespace.getNamespaceURI());
 	}
+
+	/**
+     * Parses the given stream via the default (sensible)
+     * DocumentBuilder
+     * @param inp sax source to read the XML data from
+     * @return the parsed Document 
+     */
+    public static Document readDocument(InputSource inp) throws IOException, SAXException {
+        return newDocumentBuilder().parse(inp);
+    }
 
 }

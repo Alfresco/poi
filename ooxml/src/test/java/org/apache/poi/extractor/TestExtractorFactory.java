@@ -63,6 +63,7 @@ public class TestExtractorFactory extends TestCase {
    private File dotx;
    private File docEmb;
    private File docEmbOOXML;
+   private File doc_57031;
 
    private File ppt;
    private File pptx;
@@ -92,6 +93,7 @@ public class TestExtractorFactory extends TestCase {
       dotx = wpTests.getFile("test.dotx");
       docEmb = wpTests.getFile("word_with_embeded.doc");
       docEmbOOXML = wpTests.getFile("word_with_embeded_ooxml.doc");
+      doc_57031 = wpTests.getFile("57031.docx");
 
       POIDataSamples slTests = POIDataSamples.getSlideShowInstance();
       ppt = slTests.getFile("SampleShow.ppt");
@@ -636,5 +638,13 @@ public class TestExtractorFactory extends TestCase {
       // TODO - PowerPoint
       // TODO - Publisher
       // TODO - Visio
+   }
+   
+   /**
+    * Test OOM issue 57031 caused by corrupt file
+    * https://bz.apache.org/bugzilla/show_bug.cgi?id=57031
+    */
+   public void test_bug_57031() throws Exception {
+	   assertTrue(ExtractorFactory.createExtractor(OPCPackage.open(doc_57031.toString())).getText().length() > 10);
    }
 }
