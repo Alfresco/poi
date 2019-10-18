@@ -32,7 +32,12 @@ import java.util.Date;
 import java.util.Locale;
 
 public final class TestDateFormatConverter extends TestCase {
-    private void outputLocaleDataFormats( Date date, boolean dates, boolean times, int style, String styleName ) throws Exception {
+
+	private boolean isEmptyLocale(Locale l) {
+		return null == l || l.toString().trim().length() == 0;
+	}
+	
+	private void outputLocaleDataFormats( Date date, boolean dates, boolean times, int style, String styleName ) throws Exception {
 
         Workbook workbook = new HSSFWorkbook();
         String sheetName;
@@ -57,6 +62,12 @@ public final class TestDateFormatConverter extends TestCase {
 
         int rowNum = 1;
         for( Locale locale : DateFormat.getAvailableLocales() ) {
+        	
+        	// Prevents the output from being generated if locale is empty
+        	if (isEmptyLocale(locale)) {
+        		continue;
+        	}
+        	
             Row row = sheet.createRow(rowNum++);
 
             row.createCell(0).setCellValue(locale.toString());
