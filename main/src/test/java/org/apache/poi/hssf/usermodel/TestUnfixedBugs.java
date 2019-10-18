@@ -21,6 +21,7 @@ import java.io.IOException;
 
 import org.apache.poi.hssf.HSSFTestDataSamples;
 import org.apache.poi.hssf.record.RecordFormatException;
+import org.junit.Ignore;
 
 import junit.framework.AssertionFailedError;
 import junit.framework.TestCase;
@@ -34,6 +35,7 @@ import junit.framework.TestCase;
  * Bugzilla id's PLEASE MOVE tests from this class to TestBugs once the bugs are
  * fixed, so that they are then run automatically.
  */
+@Ignore
 public final class TestUnfixedBugs extends TestCase {
 
 	public void ignoreTest43493() {
