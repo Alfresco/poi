@@ -16,10 +16,11 @@
 ==================================================================== */
 package org.apache.poi.ss.excelant;
 
-import junit.framework.TestCase;
-
+import org.apache.poi.POIDataSamples;
 import org.apache.poi.ss.excelant.util.ExcelAntWorkbookUtil;
 import org.apache.poi.ss.excelant.util.ExcelAntWorkbookUtilFactory;
+
+import junit.framework.TestCase;
 
 public class TestExcelAntSet extends TestCase {
 
@@ -27,14 +28,13 @@ public class TestExcelAntSet extends TestCase {
 	// This is abstract in nature, so we'll use a 
 	// concrete instance to test the set methods.
 	private ExcelAntSet fixture ;
-	
-	private final String mortgageCalculatorFileName =
-        "test-data/spreadsheet/mortgage-calculation.xls" ;
-
+	private String mortgageCalculatorFileName;
 
     @Override
 	public void setUp() {
 		fixture = new ExcelAntSetDoubleCell() ;
+		String testDataBaseDir = System.getProperty(POIDataSamples.TEST_PROPERTY);
+		mortgageCalculatorFileName = testDataBaseDir + "/spreadsheet/mortgage-calculation.xls" ;
 	}
 	
     @Override

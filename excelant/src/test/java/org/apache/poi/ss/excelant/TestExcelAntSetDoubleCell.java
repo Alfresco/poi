@@ -18,24 +18,25 @@ package org.apache.poi.ss.excelant;
 
 import junit.framework.TestCase;
 
+import org.apache.poi.POIDataSamples;
 import org.apache.poi.ss.excelant.util.ExcelAntWorkbookUtil;
 import org.apache.poi.ss.excelant.util.ExcelAntWorkbookUtilFactory;
 
 public class TestExcelAntSetDoubleCell extends TestCase {
 	
-	private ExcelAntSetDoubleCell fixture ;
-	
-	private final String mortgageCalculatorFileName =
-        "test-data/spreadsheet/mortgage-calculation.xls" ;
+	private ExcelAntSetDoubleCell fixture ;	
+	private String mortgageCalculatorFileName;
 	
 	private ExcelAntWorkbookUtil util ;
 
     @Override
 	public void setUp() {
 		fixture = new ExcelAntSetDoubleCell() ;
-		util = ExcelAntWorkbookUtilFactory.getInstance(
-				                                  mortgageCalculatorFileName ) ;
+		String testDataBaseDir = System.getProperty(POIDataSamples.TEST_PROPERTY);
+		mortgageCalculatorFileName = testDataBaseDir + "/spreadsheet/mortgage-calculation.xls" ;
+		util = ExcelAntWorkbookUtilFactory.getInstance(mortgageCalculatorFileName ) ;
 		fixture.setWorkbookUtil( util ) ;
+		
 	}
 	
     @Override
