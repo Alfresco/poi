@@ -134,7 +134,7 @@ public final class TestHPSFPropertiesExtractor extends TestCase {
 	}
 	
 	public void test_bug_52372() throws NoPropertySetStreamException, MarkUnsupportedException, UnsupportedEncodingException, IOException {
-		POIFSFileSystem fs = new POIFSFileSystem(_samples.openResourceAsStream("52372.doc"));
+		POIFSFileSystem fs = new POIFSFileSystem(POIDataSamples.getDocumentInstance().openResourceAsStream("52372.doc"));
 		HPSFPropertiesExtractor ext = new HPSFPropertiesExtractor(fs);
 
 		try {
