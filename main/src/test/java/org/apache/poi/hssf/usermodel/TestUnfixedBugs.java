@@ -18,13 +18,12 @@
 package org.apache.poi.hssf.usermodel;
 
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-
-import junit.framework.AssertionFailedError;
-import junit.framework.TestCase;
 
 import org.apache.poi.hssf.HSSFTestDataSamples;
 import org.apache.poi.hssf.record.RecordFormatException;
+
+import junit.framework.AssertionFailedError;
+import junit.framework.TestCase;
 
 /**
  * @author aviks
@@ -37,7 +36,7 @@ import org.apache.poi.hssf.record.RecordFormatException;
  */
 public final class TestUnfixedBugs extends TestCase {
 
-	public void test43493() {
+	public void ignoreTest43493() {
 		// Has crazy corrupt sub-records on
 		// a EmbeddedObjectRefSubRecord
 		try {
@@ -50,7 +49,7 @@ public final class TestUnfixedBugs extends TestCase {
 		}
 	}
 
-    public void test49612() throws IOException {
+    public void ignoreTest49612() throws IOException {
         HSSFWorkbook wb = HSSFTestDataSamples.openSampleWorkbook("49612.xls");
         HSSFSheet sh = wb.getSheetAt(0);
         HSSFRow row = sh.getRow(0);
