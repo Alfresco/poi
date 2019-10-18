@@ -24,6 +24,7 @@ import java.util.Date;
 
 import junit.framework.TestCase;
 
+import org.apache.poi.POIDataSamples;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.ss.examples.formula.CalculateMortgageFunction;
 import org.apache.poi.ss.formula.udf.UDFFinder;
@@ -36,7 +37,7 @@ import org.apache.tools.ant.BuildException;
 public class TestExcelAntWorkbookUtil extends TestCase {
 	
 	private final String mortgageCalculatorFileName =
-		                                  "test-data/spreadsheet/excelant.xls" ;
+		                                  getSpreadSheetFilePath("excelant.xls");
 	private ExcelAntWorkbookUtilTestHelper fixture ;
 		
 	
@@ -125,10 +126,10 @@ public class TestExcelAntWorkbookUtil extends TestCase {
 
 	public void testGetEvaluatorXLSX() {
 		fixture = new ExcelAntWorkbookUtilTestHelper( 
-                "test-data/spreadsheet/sample.xlsx") ;
+                getSpreadSheetFilePath("sample.xlsx") );
 		
 		FormulaEvaluator evaluator = fixture.getEvaluator( 
-				"test-data/spreadsheet/sample.xlsx" ) ;
+				getSpreadSheetFilePath("sample.xlsx") );
 		
 		assertNotNull( evaluator ) ;
  	}
@@ -214,5 +215,10 @@ public class TestExcelAntWorkbookUtil extends TestCase {
 		double value = fixture.getCellAsDouble( cell ) ;
 		
 		assertEquals( 0.0, value ) ;
+	}
+	
+	private static String getSpreadSheetFilePath(String name) {
+		File f = POIDataSamples.getSpreadSheetInstance().getFile(name);
+		return f.getAbsolutePath();
 	}
 }
