@@ -20,12 +20,15 @@ package org.apache.poi;
 
 import java.util.Collection;
 
+import org.junit.Ignore;
+
 import junit.framework.TestCase;
 
 /**
  * Parent class for POI JUnit TestCases, which provide additional
  *  features 
  */
+@Ignore
 public class POITestCase extends TestCase {
     public static void assertContains(String haystack, String needle) {
         assertTrue(

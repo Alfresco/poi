@@ -48,7 +48,7 @@ import org.openxmlformats.schemas.spreadsheetml.x2006.main.impl.CTFontImpl;
  * fixed, so that they are then run automatically.
  */
 public final class TestUnfixedBugs extends TestCase {
-    public void testBug54084Unicode() throws IOException {
+    public void ignore_testBug54084Unicode() throws IOException {
         // sample XLSX with the same text-contents as the text-file above
         XSSFWorkbook wb = XSSFTestDataSamples.openSampleWorkbook("54084 - Greek - beyond BMP.xlsx");
 

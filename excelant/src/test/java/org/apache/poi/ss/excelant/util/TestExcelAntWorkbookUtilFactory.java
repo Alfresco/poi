@@ -16,6 +16,10 @@
 ==================================================================== */
 package org.apache.poi.ss.excelant.util;
 
+import java.io.File;
+
+import org.apache.poi.POIDataSamples;
+
 import junit.framework.TestCase;
 
 
@@ -27,9 +31,9 @@ import junit.framework.TestCase;
  *
  */
 public class TestExcelAntWorkbookUtilFactory extends TestCase{
-
+	
 	private final String mortgageCalculatorWorkbookFile = 
-		                                 "test-data/spreadsheet/mortgage-calculation.xls" ;
+			getSpreadSheetFilePath("mortgage-calculation.xls");
 	
 	
 	/**
@@ -52,7 +56,7 @@ public class TestExcelAntWorkbookUtilFactory extends TestCase{
 	 * the same resource, are passed in. 
 	 */
 	public void testVerifyEquivalence() {
-		String sameFileName = "test-data/spreadsheet/mortgage-calculation.xls" ;
+		String sameFileName = getSpreadSheetFilePath("mortgage-calculation.xls");
 		
 		ExcelAntWorkbookUtil util = ExcelAntWorkbookUtilFactory.getInstance(
                 mortgageCalculatorWorkbookFile ) ;
@@ -66,4 +70,9 @@ public class TestExcelAntWorkbookUtilFactory extends TestCase{
 		assertEquals( util, util2 ) ;
 	}
 	
+	
+	private static String getSpreadSheetFilePath(String name) {
+		File f = POIDataSamples.getSpreadSheetInstance().getFile(name);
+		return f.getAbsolutePath();
+	}
 }

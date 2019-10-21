@@ -39,11 +39,16 @@ public abstract class BaseXLSIteratingTest {
 
 	protected static final List<String> EXCLUDED = new ArrayList<String>();
 	protected static final List<String> SILENT_EXCLUDED = new ArrayList<String>();
+	
+	public static final String TEST_PROPERTY = "POI.testdata.path";
 
 	@Test
 	public void testMain() throws Exception {
-		int count = runWithDir("test-data/spreadsheet");
-		count += runWithDir("test-data/hpsf");
+		
+		String dataDirName = System.getProperty(TEST_PROPERTY);
+		
+		int count = runWithDir(dataDirName + "/spreadsheet");
+		count += runWithDir(dataDirName + "/hpsf");
 		
 		System.out.println("Had " + count + " files");
 	}

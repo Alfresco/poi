@@ -75,10 +75,12 @@ public class TestReSave extends BaseXLSIteratingTest {
 
 	@Test
 	public void testOneFile() throws Exception {
+		
+		String dataDirName = System.getProperty(TEST_PROPERTY);
+		
 		List<String> failed = new ArrayList<String>();
-		runOneFile("test-data/spreadsheet", "49219.xls", failed);
+		runOneFile(dataDirName +  "/spreadsheet", "49219.xls", failed);
 
-		assertTrue("Expected to have no failed except the ones excluded, but had: " + failed, 
-				failed.isEmpty());
+		assertTrue("Expected to have no failed except the ones excluded, but had: " + failed, failed.isEmpty());
 	}
 }
