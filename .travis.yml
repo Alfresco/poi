@@ -4,5 +4,5 @@ language: java
 jdk: 
   - openjdk7
 
-script:
-- echo "skipping tests"
+install:
+  - ""
