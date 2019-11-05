@@ -52,6 +52,13 @@
 		<maven.plugin.antrun.version>1.8</maven.plugin.antrun.version>
 		<maven.plugin.surefire.version>2.19.1</maven.plugin.surefire.version>
 	</properties>
+	
+    <distributionManagement>
+        <repository>
+            <id>release-repository</id>
+            <url>https://artifacts.alfresco.com/nexus/content/repositories/thirdparty</url>
+        </repository>
+    </distributionManagement>
 
 	<dependencies>
 		<dependency>
