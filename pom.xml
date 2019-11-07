@@ -3,7 +3,7 @@
 	<groupId>org.apache.poi</groupId>
 	<artifactId>poi-parent</artifactId>
 	<packaging>pom</packaging>
-	<version>3.10.1-20191015-alfresco-patched</version>
+	<version>3.10.1-20191015-alfresco-patched-SNAPSHOT</version>
 	<name>Apache POI - the Java API for Microsoft Documents</name>
 	<description>Maven build of Apache POI for Sonar checks</description>
 	<url>http://poi.apache.org/</url>
@@ -55,10 +55,16 @@
 	
     <distributionManagement>
         <repository>
-            <id>release-repository</id>
+            <id>alfresco-public</id>
             <url>https://artifacts.alfresco.com/nexus/content/repositories/thirdparty</url>
         </repository>
     </distributionManagement>
+
+    <scm>
+        <connection>scm:git:https://github.com/Alfresco/poi.git</connection>
+        <developerConnection>scm:git:https://github.com/Alfresco/poi.git</developerConnection>
+        <url>https://github.com/Alfresco/poi</url>
+    </scm>
 
 	<dependencies>
 		<dependency>
