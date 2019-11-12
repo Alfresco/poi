@@ -3,7 +3,7 @@
 	<parent>
 		<groupId>org.apache.poi</groupId>
 		<artifactId>poi-parent</artifactId>
-		<version>3.10.1-20191018-alfresco-patched-SNAPSHOT</version>
+		<version>3.10.1-20191018-alfresco-patched</version>
 	</parent>
 	<artifactId>poi</artifactId>
 	<packaging>jar</packaging>
