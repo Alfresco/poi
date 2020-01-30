@@ -55,7 +55,7 @@
 	
     <distributionManagement>
         <repository>
-            <id>alfresco-internal</id>
+            <id>alfresco-public</id>
             <url>https://artifacts.alfresco.com/nexus/content/repositories/thirdparty</url>
         </repository>
     </distributionManagement>
